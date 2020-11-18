@@ -1,4 +1,4 @@
-package iua.info3.structures;
+package ar.edu.iua.info3.structures;
 
 
 public class BinaryTree<AnyType extends Comparable<? super AnyType>> {

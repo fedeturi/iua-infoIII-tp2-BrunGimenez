@@ -1,4 +1,4 @@
-package iua.info3.structures;// AvlTree class
+package ar.edu.iua.info3.structures;
 //
 // CONSTRUCTION: with no initializer
 //

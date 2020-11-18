@@ -7,6 +7,8 @@ public class Main {
     public static void main(String[] args) {
         CSVReaderCOVID csvReader = new CSVReaderCOVID();
 
-        csvReader.readCSV();
+        int cantMuestras = csvReader.readCSV();
+
+        System.out.println("Cantidad de muestras: " + cantMuestras);
     }
 }

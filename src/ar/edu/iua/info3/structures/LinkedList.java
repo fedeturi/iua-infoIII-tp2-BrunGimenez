@@ -1,4 +1,4 @@
-package iua.info3.structures;
+package ar.edu.iua.info3.structures;
 
 public class LinkedList<AnyType> {
     private LinkedNode<AnyType> begin;

@@ -1,4 +1,4 @@
-package iua.info3.structures;
+package ar.edu.iua.info3.structures;
 
 interface HashFunc<TypeKey extends Comparable<TypeKey>> {
     int hashFunction(TypeKey key);

@@ -1,4 +1,4 @@
-package iua.info3.structures;
+package ar.edu.iua.info3.structures;
 // BinaryHeap class
 //
 // CONSTRUCTION: with optional capacity (that defaults to 100)
