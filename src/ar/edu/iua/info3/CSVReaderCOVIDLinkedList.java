@@ -82,7 +82,7 @@ public class CSVReaderCOVIDLinkedList {
         this.pctgFallInf = 0;
     }
 
-    public HashTable<String, Integer> readCSV() {
+    public HashTable<Integer, String> readCSV() {
         CSVReader reader = null;
 
         try {
@@ -215,46 +215,46 @@ public class CSVReaderCOVIDLinkedList {
 
         } catch (Exception e) {
             e.printStackTrace();
-            HashTable<String, Integer> estadisticas = new HashTable<>(1);
-            return estadisticas;
+            HashTable<Integer, String> stat = new HashTable<>(1);
+            return stat;
         }
 
         this.pctgInfMuestra = this.cantInfectados * 100 / this.cantMuestras;
         this.pctgFallInf = this.cantFallecidos * 100 / this.cantInfectados;
 
-        HashTable<String, Integer> estadisticas = new HashTable<>(27);
+        HashTable<Integer, String> estadisticas = new HashTable<>(27);
 
         try {
-            estadisticas.insert("Muestras", this.cantMuestras);
-            estadisticas.insert("Fallecidos", this.cantFallecidos);
-            estadisticas.insert("Infectados", this.cantInfectados);
+            estadisticas.insert(1, Integer.toString(this.cantMuestras));
+            estadisticas.insert(2, Integer.toString(this.cantFallecidos));
+            estadisticas.insert(3, Integer.toString(this.cantInfectados));
 
-            estadisticas.insert("inf0a10", this.inf0a10);
-            estadisticas.insert("inf11a20", this.inf11a20);
-            estadisticas.insert("inf21a30", this.inf21a30);
-            estadisticas.insert("inf31a40", this.inf31a40);
-            estadisticas.insert("inf41a50", this.inf41a50);
-            estadisticas.insert("inf51a60", this.inf51a60);
-            estadisticas.insert("inf61a70", this.inf61a70);
-            estadisticas.insert("inf71a80", this.inf71a80);
-            estadisticas.insert("inf81a90", this.inf81a90);
-            estadisticas.insert("inf91a100", this.inf91a100);
-            estadisticas.insert("inf101a150", this.inf101a150);
+            estadisticas.insert(4, Integer.toString(this.inf0a10));
+            estadisticas.insert(5, Integer.toString(this.inf11a20));
+            estadisticas.insert(6, Integer.toString(this.inf21a30));
+            estadisticas.insert(7, Integer.toString(this.inf31a40));
+            estadisticas.insert(8, Integer.toString(this.inf41a50));
+            estadisticas.insert(9, Integer.toString(this.inf51a60));
+            estadisticas.insert(10, Integer.toString(this.inf61a70));
+            estadisticas.insert(11, Integer.toString(this.inf71a80));
+            estadisticas.insert(12, Integer.toString(this.inf81a90));
+            estadisticas.insert(13, Integer.toString(this.inf91a100));
+            estadisticas.insert(14, Integer.toString(this.inf101a150));
 
-            estadisticas.insert("fall0a10", this.fall0a10);
-            estadisticas.insert("fall11a20", this.fall11a20);
-            estadisticas.insert("fall21a30", this.fall21a30);
-            estadisticas.insert("fall31a40", this.fall31a40);
-            estadisticas.insert("fall41a50", this.fall41a50);
-            estadisticas.insert("fall51a60", this.fall51a60);
-            estadisticas.insert("fall61a70", this.fall61a70);
-            estadisticas.insert("fall71a80", this.fall71a80);
-            estadisticas.insert("fall81a90", this.fall81a90);
-            estadisticas.insert("fall91a100", this.fall91a100);
-            estadisticas.insert("fall101a150", this.fall101a150);
+            estadisticas.insert(15, Integer.toString(this.fall0a10));
+            estadisticas.insert(16, Integer.toString(this.fall11a20));
+            estadisticas.insert(17, Integer.toString(this.fall21a30));
+            estadisticas.insert(18, Integer.toString(this.fall31a40));
+            estadisticas.insert(19, Integer.toString(this.fall41a50));
+            estadisticas.insert(20, Integer.toString(this.fall51a60));
+            estadisticas.insert(21, Integer.toString(this.fall61a70));
+            estadisticas.insert(22, Integer.toString(this.fall71a80));
+            estadisticas.insert(23, Integer.toString(this.fall81a90));
+            estadisticas.insert(24, Integer.toString(this.fall91a100));
+            estadisticas.insert(25, Integer.toString(this.fall101a150));
 
-            estadisticas.insert("pctgInfMuestra", (int) this.pctgInfMuestra);
-            estadisticas.insert("pctgFallInf", (int) this.pctgFallInf);
+            estadisticas.insert(26, Float.toString(this.pctgInfMuestra));
+            estadisticas.insert(27, Float.toString(this.pctgFallInf));
 
 
         } catch (Exception e) {

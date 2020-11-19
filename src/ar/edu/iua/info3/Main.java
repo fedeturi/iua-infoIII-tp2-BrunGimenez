@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         CSVReaderCOVIDLinkedList csvReader = new CSVReaderCOVIDLinkedList();
 
-        HashTable<String, Integer> estadisticas = csvReader.readCSV();
+        HashTable<Integer, String> estadisticas = csvReader.readCSV();
 
         // Lee los parametros de la consola e invoca a la funcion correspondiente
         if (args.length == 1) {
@@ -17,6 +17,7 @@ public class Main {
             switch (funct) {
                 case "-estad":
                     csvReader.printStats();
+                    System.out.println(estadisticas.get(1));
                     break;
                 case "-p_casos":
                     System.out.println("Casos");
@@ -42,7 +43,7 @@ public class Main {
             switch (funct) {
                 case "-estad":
                     csvReader.printStats();
-                    System.out.println(estadisticas.get("Muestras"));
+                    System.out.println(estadisticas.get(1));
                     break;
                 case "-p_casos":
                     System.out.println("Casos " + functParam);
