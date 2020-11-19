@@ -4,49 +4,86 @@ import java.io.FileReader;
 import java.io.File;
 import java.net.URL;
 
+import ar.edu.iua.info3.structures.HashTable;
 import ar.edu.iua.info3.structures.LinkedList;
 
 import com.opencsv.CSVReader;
 
 
 public class CSVReaderCOVIDLinkedList {
+    // Contadores
+    private int cantMuestras;
+    private int cantInfectados;
+    private int cantFallecidos;
+
+    // Contadores infectados por rango etareo de 10
+    private int inf0a10;
+    private int inf11a20;
+    private int inf21a30;
+    private int inf31a40;
+    private int inf41a50;
+    private int inf51a60;
+    private int inf61a70;
+    private int inf71a80;
+    private int inf81a90;
+    private int inf91a100;
+    private int inf101a150;
+
+    // Contadores fallecidos por rango etareo de 10
+    private int fall0a10;
+    private int fall11a20;
+    private int fall21a30;
+    private int fall31a40;
+    private int fall41a50;
+    private int fall51a60;
+    private int fall61a70;
+    private int fall71a80;
+    private int fall81a90;
+    private int fall91a100;
+    private int fall101a150;
+
+
+    private float pctgInfMuestra;
+    private float pctgFallInf;
 
     public CSVReaderCOVIDLinkedList() {
-    }
-
-    public static int readCSV() {
-        CSVReader reader = null;
-
         // Contadores
-        int cantMuestras = 0;
-        int cantInfectados = 0;
-        int cantFallecidos = 0;
+        this.cantMuestras = 0;
+        this.cantInfectados = 0;
+        this.cantFallecidos = 0;
 
         // Contadores infectados por rango etareo de 10
-        int inf0a10 = 0;
-        int inf11a20 = 0;
-        int inf21a30 = 0;
-        int inf31a40 = 0;
-        int inf41a50 = 0;
-        int inf51a60 = 0;
-        int inf61a70 = 0;
-        int inf71a80 = 0;
-        int inf81a90 = 0;
-        int inf91a100 = 0;
-        int inf101a150 = 0;
+        this.inf0a10 = 0;
+        this.inf11a20 = 0;
+        this.inf21a30 = 0;
+        this.inf31a40 = 0;
+        this.inf41a50 = 0;
+        this.inf51a60 = 0;
+        this.inf61a70 = 0;
+        this.inf71a80 = 0;
+        this.inf81a90 = 0;
+        this.inf91a100 = 0;
+        this.inf101a150 = 0;
 
         // Contadores fallecidos por rango etareo de 10
-        int fall0a10 = 0;
-        int fall11a20 = 0;
-        int fall21a30 = 0;
-        int fall31a40 = 0;
-        int fall41a50 = 0;
-        int fall51a60 = 0;
-        int fall61a70 = 0;
-        int fall71a80 = 0;
-        int fall81a90 = 0;
-        int fall91a100 = 0;
-        int fall101a150 = 0;
+        this.fall0a10 = 0;
+        this.fall11a20 = 0;
+        this.fall21a30 = 0;
+        this.fall31a40 = 0;
+        this.fall41a50 = 0;
+        this.fall51a60 = 0;
+        this.fall61a70 = 0;
+        this.fall71a80 = 0;
+        this.fall81a90 = 0;
+        this.fall91a100 = 0;
+        this.fall101a150 = 0;
+
+        this.pctgInfMuestra = 0;
+        this.pctgFallInf = 0;
+    }
+
+    public HashTable<String, Integer> readCSV() {
+        CSVReader reader = null;
 
         try {
 
@@ -74,18 +111,18 @@ public class CSVReaderCOVIDLinkedList {
                 }
 
                 // Contador cantidad de muestras
-                cantMuestras++;
+                this.cantMuestras++;
 
                 // Contador cantidad de infectados
                 infectado = caso.get(20).toLowerCase().equals("confirmado");
                 if (infectado) {
-                    cantInfectados++;
+                    this.cantInfectados++;
                 }
 
                 // Contador cantidad de fallecidos
                 fallecido = caso.get(14).toLowerCase().equals("si");
                 if (fallecido) {
-                    cantFallecidos++;
+                    this.cantFallecidos++;
                 }
 
                 // Contadores por edad
@@ -95,80 +132,80 @@ public class CSVReaderCOVIDLinkedList {
 
                     if (edad > 0 && edad <= 10) {
                         if (infectado) {
-                            inf0a10++;
+                            this.inf0a10++;
                         }
                         if (fallecido) {
-                            fall0a10++;
+                            this.fall0a10++;
                         }
                     } else if (edad > 10 && edad <= 20) {
                         if (infectado) {
-                            inf11a20++;
+                            this.inf11a20++;
                         }
                         if (fallecido) {
-                            fall11a20++;
+                            this.fall11a20++;
                         }
                     } else if (edad > 20 && edad <= 30) {
                         if (infectado) {
-                            inf21a30++;
+                            this.inf21a30++;
                         }
                         if (fallecido) {
-                            fall21a30++;
+                            this.fall21a30++;
                         }
                     } else if (edad > 30 && edad <= 40) {
                         if (infectado) {
-                            inf31a40++;
+                            this.inf31a40++;
                         }
                         if (fallecido) {
-                            fall31a40++;
+                            this.fall31a40++;
                         }
                     } else if (edad > 40 && edad <= 50) {
                         if (infectado) {
-                            inf41a50++;
+                            this.inf41a50++;
                         }
                         if (fallecido) {
-                            fall41a50++;
+                            this.fall41a50++;
                         }
                     } else if (edad > 50 && edad <= 60) {
                         if (infectado) {
-                            inf51a60++;
+                            this.inf51a60++;
                         }
                         if (fallecido) {
-                            fall51a60++;
+                            this.fall51a60++;
                         }
                     } else if (edad > 60 && edad <= 70) {
                         if (infectado) {
-                            inf61a70++;
+                            this.inf61a70++;
                         }
                         if (fallecido) {
-                            fall61a70++;
+                            this.fall61a70++;
                         }
                     } else if (edad > 70 && edad <= 80) {
                         if (infectado) {
-                            inf71a80++;
+                            this.inf71a80++;
                         }
                         if (fallecido) {
-                            fall71a80++;
+                            this.fall71a80++;
                         }
                     } else if (edad > 80 && edad <= 90) {
                         if (infectado) {
-                            inf81a90++;
+                            this.inf81a90++;
                         }
                         if (fallecido) {
-                            fall81a90++;
+                            this.fall81a90++;
                         }
                     } else if (edad > 90 && edad <= 100) {
                         if (infectado) {
-                            inf91a100++;
+                            this.inf91a100++;
                         }
                         if (fallecido) {
-                            fall91a100++;
+                            this.fall91a100++;
                         }
                     } else if (edad > 100 && edad <= 150) {
                         if (infectado) {
-                            inf101a150++;
+                            this.inf101a150++;
                         }
                         if (fallecido) {
-                            fall101a150++;
+                            this.fall101a150++;
                         }
                     }
 
@@ -178,50 +215,90 @@ public class CSVReaderCOVIDLinkedList {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return -1;
+            HashTable<String, Integer> estadisticas = new HashTable<>(1);
+            return estadisticas;
         }
 
-        float pctgInfMuestra = cantInfectados * 100 / cantMuestras;
-        float pctgFallInf = cantFallecidos * 100 / cantInfectados;
+        this.pctgInfMuestra = this.cantInfectados * 100 / this.cantMuestras;
+        this.pctgFallInf = this.cantFallecidos * 100 / this.cantInfectados;
 
+        HashTable<String, Integer> estadisticas = new HashTable<>(27);
+
+        try {
+            estadisticas.insert("Muestras", this.cantMuestras);
+            estadisticas.insert("Fallecidos", this.cantFallecidos);
+            estadisticas.insert("Infectados", this.cantInfectados);
+
+            estadisticas.insert("inf0a10", this.inf0a10);
+            estadisticas.insert("inf11a20", this.inf11a20);
+            estadisticas.insert("inf21a30", this.inf21a30);
+            estadisticas.insert("inf31a40", this.inf31a40);
+            estadisticas.insert("inf41a50", this.inf41a50);
+            estadisticas.insert("inf51a60", this.inf51a60);
+            estadisticas.insert("inf61a70", this.inf61a70);
+            estadisticas.insert("inf71a80", this.inf71a80);
+            estadisticas.insert("inf81a90", this.inf81a90);
+            estadisticas.insert("inf91a100", this.inf91a100);
+            estadisticas.insert("inf101a150", this.inf101a150);
+
+            estadisticas.insert("fall0a10", this.fall0a10);
+            estadisticas.insert("fall11a20", this.fall11a20);
+            estadisticas.insert("fall21a30", this.fall21a30);
+            estadisticas.insert("fall31a40", this.fall31a40);
+            estadisticas.insert("fall41a50", this.fall41a50);
+            estadisticas.insert("fall51a60", this.fall51a60);
+            estadisticas.insert("fall61a70", this.fall61a70);
+            estadisticas.insert("fall71a80", this.fall71a80);
+            estadisticas.insert("fall81a90", this.fall81a90);
+            estadisticas.insert("fall91a100", this.fall91a100);
+            estadisticas.insert("fall101a150", this.fall101a150);
+
+            estadisticas.insert("pctgInfMuestra", (int) this.pctgInfMuestra);
+            estadisticas.insert("pctgFallInf", (int) this.pctgFallInf);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return estadisticas;
+    }
+
+    public void printStats() {
         System.out.println("========================================");
         System.out.println("ESTADISTICAS GENERALES");
         System.out.println("----------------------------------------");
-        System.out.println("Cantidad de Muestras: \t\t\t" + cantMuestras);
-        System.out.println("Cantidad de Infectados: \t\t " + cantInfectados);
-        System.out.println("Cantidad de Fallecidos: \t\t  " + cantFallecidos);
-        System.out.println("Tasa Infectados/Muestras: \t\t" + pctgInfMuestra + " %");
-        System.out.println("Tasa Fallecidos/Infectados: \t " + pctgFallInf + " %");
+        System.out.println("Cantidad de Muestras: \t\t\t" + this.cantMuestras);
+        System.out.println("Cantidad de Infectados: \t\t " + this.cantInfectados);
+        System.out.println("Cantidad de Fallecidos: \t\t  " + this.cantFallecidos);
+        System.out.println("Tasa Infectados/Muestras: \t\t" + this.pctgInfMuestra + " %");
+        System.out.println("Tasa Fallecidos/Infectados: \t " + this.pctgFallInf + " %");
         System.out.println("========================================");
         System.out.println("ESTADISTICAS POR EDAD");
         System.out.println("----------------------------------------");
-        System.out.println("Cantidad infectados\t  0-10\taños: " + inf0a10);
-        System.out.println("Cantidad infectados\t 11-20\taños: " + inf11a20);
-        System.out.println("Cantidad infectados\t 21-30\taños: " + inf21a30);
-        System.out.println("Cantidad infectados\t 31-40\taños: " + inf31a40);
-        System.out.println("Cantidad infectados\t 41-50\taños: " + inf41a50);
-        System.out.println("Cantidad infectados\t 51-60\taños: " + inf51a60);
-        System.out.println("Cantidad infectados\t 61-70\taños: " + inf61a70);
-        System.out.println("Cantidad infectados\t 71-80\taños: " + inf71a80);
-        System.out.println("Cantidad infectados\t 81-90\taños: " + inf81a90);
-        System.out.println("Cantidad infectados\t 91-100\taños: " + inf91a100);
-        System.out.println("Cantidad infectados\t101-150\taños: " + inf101a150);
+        System.out.println("Cantidad infectados\t  0-10\taños: " + this.inf0a10);
+        System.out.println("Cantidad infectados\t 11-20\taños: " + this.inf11a20);
+        System.out.println("Cantidad infectados\t 21-30\taños: " + this.inf21a30);
+        System.out.println("Cantidad infectados\t 31-40\taños: " + this.inf31a40);
+        System.out.println("Cantidad infectados\t 41-50\taños: " + this.inf41a50);
+        System.out.println("Cantidad infectados\t 51-60\taños: " + this.inf51a60);
+        System.out.println("Cantidad infectados\t 61-70\taños: " + this.inf61a70);
+        System.out.println("Cantidad infectados\t 71-80\taños: " + this.inf71a80);
+        System.out.println("Cantidad infectados\t 81-90\taños: " + this.inf81a90);
+        System.out.println("Cantidad infectados\t 91-100\taños: " + this.inf91a100);
+        System.out.println("Cantidad infectados\t101-150\taños: " + this.inf101a150);
         System.out.println("----------------------------------------");
-        System.out.println("Cantidad fallecidos\t  0-10\taños: " + fall0a10);
-        System.out.println("Cantidad fallecidos\t 11-20\taños: " + fall11a20);
-        System.out.println("Cantidad fallecidos\t 21-30\taños: " + fall21a30);
-        System.out.println("Cantidad fallecidos\t 31-40\taños: " + fall31a40);
-        System.out.println("Cantidad fallecidos\t 41-50\taños: " + fall41a50);
-        System.out.println("Cantidad fallecidos\t 51-60\taños: " + fall51a60);
-        System.out.println("Cantidad fallecidos\t 61-70\taños: " + fall61a70);
-        System.out.println("Cantidad fallecidos\t 71-80\taños: " + fall71a80);
-        System.out.println("Cantidad fallecidos\t 81-90\taños: " + fall81a90);
-        System.out.println("Cantidad fallecidos\t 91-100\taños: " + fall91a100);
-        System.out.println("Cantidad fallecidos\t101-150\taños: " + fall101a150);
+        System.out.println("Cantidad fallecidos\t  0-10\taños: " + this.fall0a10);
+        System.out.println("Cantidad fallecidos\t 11-20\taños: " + this.fall11a20);
+        System.out.println("Cantidad fallecidos\t 21-30\taños: " + this.fall21a30);
+        System.out.println("Cantidad fallecidos\t 31-40\taños: " + this.fall31a40);
+        System.out.println("Cantidad fallecidos\t 41-50\taños: " + this.fall41a50);
+        System.out.println("Cantidad fallecidos\t 51-60\taños: " + this.fall51a60);
+        System.out.println("Cantidad fallecidos\t 61-70\taños: " + this.fall61a70);
+        System.out.println("Cantidad fallecidos\t 71-80\taños: " + this.fall71a80);
+        System.out.println("Cantidad fallecidos\t 81-90\taños: " + this.fall81a90);
+        System.out.println("Cantidad fallecidos\t 91-100\taños: " + this.fall91a100);
+        System.out.println("Cantidad fallecidos\t101-150\taños: " + this.fall101a150);
         System.out.println("========================================");
-
-
-        return cantMuestras;
     }
 
 }
