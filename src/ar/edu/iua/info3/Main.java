@@ -17,7 +17,6 @@ public class Main {
             switch (funct) {
                 case "-estad":
                     csvReader.printStats();
-                    System.out.println(estadisticas.get(1));
                     break;
                 case "-p_casos":
                     System.out.println("Casos");
@@ -43,7 +42,6 @@ public class Main {
             switch (funct) {
                 case "-estad":
                     csvReader.printStats();
-                    System.out.println(estadisticas.get(1));
                     break;
                 case "-p_casos":
                     System.out.println("Casos " + functParam);

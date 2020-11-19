@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="iua-infoIII-tp2-BrunGimenez:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/iua_infoIII_tp2_BrunGimenez_jar</output-path>
+    <root id="archive" name="iua-infoIII-tp2-BrunGimenez.jar">
+      <element id="module-output" name="iua-infoIII-tp2-BrunGimenez" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/opencsv-3.8.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
