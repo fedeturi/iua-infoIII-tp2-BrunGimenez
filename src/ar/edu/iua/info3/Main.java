@@ -4,7 +4,7 @@ import ar.edu.iua.info3.structures.HashTable;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         CSVReaderCOVIDLinkedList csvReader = new CSVReaderCOVIDLinkedList();
 
         HashTable<String, Integer> estadisticas = csvReader.readCSV();
@@ -42,6 +42,7 @@ public class Main {
             switch (funct) {
                 case "-estad":
                     csvReader.printStats();
+                    System.out.println(estadisticas.get("Muestras"));
                     break;
                 case "-p_casos":
                     System.out.println("Casos " + functParam);
